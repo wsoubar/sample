@@ -27,3 +27,7 @@ Content-Type: application/json
     "nome": "Mariazinha",
     "idade": 30
 }
+
+###
+
+DELETE {{host}}/1
