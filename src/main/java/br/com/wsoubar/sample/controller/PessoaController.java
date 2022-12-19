@@ -54,9 +54,9 @@ public class PessoaController {
     }
 
     @GetMapping(value="/pessoas/{id}")
-    public ResponseEntity<?> getById(@PathVariable String id) {
+    public ResponseEntity<?> getById(@PathVariable Integer id) {
         System.out.println("id> "+ id);
-        Pessoa pessoa = pessoaService.getById(new Integer(id));
+        Pessoa pessoa = pessoaService.getById(id);
         if (pessoa != null) {
             return ResponseEntity.ok(pessoa);
         } else {
@@ -64,5 +64,14 @@ public class PessoaController {
         }
     }
     
+    @PutMapping(value="/pessoas/{id}")
+    public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody Pessoa pessoa) {
+        Pessoa p = pessoaService.update(id, pessoa);
+        if (p != null) {
+            return ResponseEntity.ok(p);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
     
 }
