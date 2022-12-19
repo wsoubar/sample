@@ -1,0 +1,7 @@
+spring:
+    jpa:
+        defer-datasource-initialization: true
+        open-in-view: true
+    output:
+        ansi:
+            enabled: always

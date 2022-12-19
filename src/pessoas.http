@@ -1,0 +1,13 @@
+@host = http://localhost:8080/pessoa
+
+{{host}}/listAll
+
+###
+
+POST {{host}}/add
+Content-Type: application/json
+
+{
+    "nome"  : "Fulano",
+    "idade" : 21 
+}
