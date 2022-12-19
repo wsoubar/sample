@@ -17,3 +17,13 @@ Content-Type: application/json
 
 
 GET {{host}}/1
+
+###
+
+PUT {{host}}/2
+Content-Type: application/json
+
+{
+    "nome": "Mariazinha",
+    "idade": 30
+}
