@@ -11,6 +11,11 @@ import br.com.wsoubar.sample.model.Pessoa;
 import br.com.wsoubar.sample.service.PessoaService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
 
 
 @RestController
@@ -26,13 +31,13 @@ public class PessoaController {
         this.pessoaService = pessoaService;
     }
 
-    @GetMapping("/pessoa/listAll")
+    @GetMapping("/pessoas")
     public ResponseEntity<?> findAll() {
         List<Pessoa> pessoas = pessoaService.findAll();
         return ResponseEntity.ok(pessoas);
     }
 
-    @PostMapping(value="/pessoa/add")
+    @PostMapping(value="/pessoas")
     public ResponseEntity<?> insert(@RequestBody Pessoa newPessoa) {
         try {
             System.out.println(newPessoa.toString());
@@ -47,5 +52,17 @@ public class PessoaController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping(value="/pessoas/{id}")
+    public ResponseEntity<?> getById(@PathVariable String id) {
+        System.out.println("id> "+ id);
+        Pessoa pessoa = pessoaService.getById(new Integer(id));
+        if (pessoa != null) {
+            return ResponseEntity.ok(pessoa);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+    
     
 }

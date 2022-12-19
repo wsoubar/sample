@@ -1,13 +1,19 @@
-@host = http://localhost:8080/pessoa
+@host = http://localhost:8080/pessoas
 
-{{host}}/listAll
+{{host}}
 
 ###
 
-POST {{host}}/add
+POST {{host}}
 Content-Type: application/json
 
 {
     "nome"  : "Fulano",
     "idade" : 21 
 }
+
+###
+@id = 1
+
+
+GET {{host}}/1
