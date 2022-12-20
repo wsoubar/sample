@@ -11,7 +11,7 @@
 	<groupId>br.com.wsoubar</groupId>
 	<artifactId>sample</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>sample</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
