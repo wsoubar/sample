@@ -13,8 +13,6 @@ Content-Type: application/json
 }
 
 ###
-@id = 1
-
 
 GET {{host}}/1
 
