@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,19 +25,14 @@ public class PessoaController {
     @Autowired
     private PessoaService pessoaService;
 
+    @Value("${spring.application.name}")
+    private String nomeApp;
+
     private static final Logger LOGGER = LoggerFactory.getLogger(PessoaController.class);
-
-
-    PessoaController(PessoaService pessoaService) {
-        this.pessoaService = pessoaService;
-    }
-
-    public void setPessoaService(PessoaService pessoaService) {
-        this.pessoaService = pessoaService;
-    }
 
     @GetMapping("/pessoas")
     public ResponseEntity<?> findAll() {
+        LOGGER.info("Spring App Name: "+ nomeApp);
         List<Pessoa> pessoas = pessoaService.findAll();
         return ResponseEntity.ok(pessoas);
     }
